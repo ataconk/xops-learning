@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
+        
+      - name: bid
         run: |
           npm install -g bats
           bats -v
