@@ -16,18 +16,10 @@ jobs:
         run: |
           ls -la
 
-      - name: Deploy to DigitalOcean Droplet
-        uses: appleboy/ssh-action@master
+     - uses: actions/setup-node@v3
         with:
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USERNAME}}
-          key: ${{secrets.KEY}}
-          script: |
-            echo 'Deployment to digital ocean finished'
-          
-      - name: restart the service
-        working-directory: /usr/local/bin/home
-        run: sudo systemctl restart fastapi_demo
-
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
 
 
