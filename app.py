@@ -37,11 +37,11 @@ def main():
 	return {'message': 'Welcome to GeeksforGeeks!'}
 
 # Defining path operation for /name endpoint
-@app.get('/{nam}')
+@app.get('/{name}')
 def hello_name(name : str):
 	# Defining a function that takes only string as input and output the
 	# following message.
-    return {'message': f'Welcome to GeeksforGeeks!, {nam}'}
+    return {'message': f'Welcome to GeeksforGeeks!, {name}'}
 
 # Creating an Endpoint to receive the data
 # to make prediction on.
