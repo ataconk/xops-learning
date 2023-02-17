@@ -1458,3 +1458,5 @@
  - "POST / HTTP/1.0" 405
  - "GET /.env HTTP/1.0" 422
  - "GET / HTTP/1.0" 200
+ - "POST / HTTP/1.0" 405
+ - "GET /.env HTTP/1.0" 422
