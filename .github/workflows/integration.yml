@@ -15,7 +15,7 @@ jobs:
       - name: Open Web Client Directory
         run: |
           ls -la
-          
+
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v0.1.7
         with:
@@ -23,6 +23,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: whoami
+          script: |
+            whoami
+            cd /usr/local/bin/home
+            git pull
 
 
