@@ -15,6 +15,15 @@ jobs:
       - name: Open Web Client Directory
         run: |
           ls -la
+
+      - name: Deploy to DigitalOcean Droplet
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          key: ${{secrets.KEY}}
+          script: |
+            echo 'Deployment to digital ocean finished'
           
       - name: restart the service
         working-directory: /usr/local/bin/home
