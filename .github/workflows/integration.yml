@@ -27,5 +27,6 @@ jobs:
             whoami
             cd /usr/local/bin/home
             git pull
+            sudo systemctl restart fastapi_demo
 
 
