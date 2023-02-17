@@ -7,14 +7,14 @@ from pydantic import BaseModel, constr, conlist
 from typing import List
 
 
-
 # Creating class to define the request body
 # and the type hints of each attribute
 class request_body(BaseModel):
-    sepal_length : float
-    sepal_width : float
-    petal_length : float
-    petal_width : float
+    sepal_length: float
+    sepal_width: float
+    petal_length: float
+    petal_width: float
+
 
 # Loading Iris Dataset
 iris = load_iris()
@@ -25,40 +25,44 @@ Y = iris.target
 
 # Creating and Fitting our Model
 clf = GaussianNB()
-clf.fit(X,Y)
+clf.fit(X, Y)
 
 
 # Declaring our FastAPI instance
 app = FastAPI()
 
 # Defining path operation for root endpoint
+
+
 @app.get('/')
 def main():
-	return {'message': 'Welcome to GeeksforGeeks!'}
+    return {'message': 'Welcome to GeeksforGeeks!'}
 
 # Defining path operation for /name endpoint
+
+
 @app.get('/{name}')
-def hello_name(name : str):
-	# Defining a function that takes only string as input and output the
-	# following message.
-    return {'message': f'Welcome to GeeksforGeeks!, {name}'}
+def hello_name(name: str):
+    # Defining a function that takes only string as input and output the
+    # following message.
+    return {'message': f'Welcome to GeeksforGeekssss!, {name}'}
 
 # Creating an Endpoint to receive the data
 # to make prediction on.
+
+
 @app.post('/predict')
-def predict(data : request_body):
+def predict(data: request_body):
     # Making the data in a form suitable for prediction
     test_data = [[
-            data.sepal_length,
-            data.sepal_width,
-            data.petal_length,
-            data.petal_width
+        data.sepal_length,
+        data.sepal_width,
+        data.petal_length,
+        data.petal_width
     ]]
 
     # Predicting the Class
     class_idx = clf.predict(test_data)[0]
 
     # Return the Result
-    return { 'class' : iris.target_names[class_idx]}
-
-
+    return {'class': iris.target_names[class_idx]}

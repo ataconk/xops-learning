@@ -1,7 +1,7 @@
 name: Continuous Integration
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -15,10 +15,18 @@ jobs:
       - name: Open Web Client Directory
         run: |
           ls -la
-          
-      - name: restart the service
-        working-directory: /usr/local/bin/home
-        run: sudo systemctl restart fastapi_demo
 
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            whoami
+            cd /usr/local/bin/home
+            git pull
+            sudo systemctl restart fastapi_demo
 
 
