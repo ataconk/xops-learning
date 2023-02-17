@@ -15,16 +15,14 @@ jobs:
       - name: Open Web Client Directory
         run: |
           ls -la
-
-    
-      - name: calis
-        uses: actions/setup-node@v3
+          
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v0.1.7
         with:
-          node-version: '14'
-        
-      - name: bid
-        run: |
-          npm install -g bats
-          bats -v
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: whoami
 
 
