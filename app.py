@@ -47,6 +47,13 @@ def hello_name(name: str):
     # following message.
     return {'message': f'Welcome to GeeksforGeekssss!, {name}'}
 
+
+@app.get('/city/{name}')
+def city(name: str):
+    # Defining a function that takes only string as input and output the
+    # following message.
+    return {'message': f'Welcome to {name}, from GeeksforGeekssss'}
+
 # Creating an Endpoint to receive the data
 # to make prediction on.
 
