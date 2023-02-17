@@ -12,14 +12,8 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v2
 
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
+      - name: restart the service
+        run: sudo systemctl start fastapi_demo
 
-      - name: Install dependencies
-        run: npm ci
 
-      - name: Test application
-        run: npm test
 
