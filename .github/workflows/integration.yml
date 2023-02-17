@@ -12,10 +12,12 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v2
 
-      - name: change dir
-        run: cd /usr/local/bin/home
-
+      - name: Open Web Client Directory
+        run: |
+          ls -la
+          
       - name: restart the service
+        working-directory: /usr/local/bin/home
         run: sudo systemctl restart fastapi_demo
 
 
