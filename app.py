@@ -48,12 +48,6 @@ def hello_name(name: str):
     return {'message': f'Welcome to GeeksforGeekss!, {name}'}
 
 
-@app.get('/{mmm}')
-def hello_mmm(mmm: str):
-    # Defining a function that takes only string as input and output the
-    # following message.
-    return {'message': f'Welcome to GeeksforGeekss!, {mmm}'}
-
 # Creating an Endpoint to receive the data
 # to make prediction on.
 
