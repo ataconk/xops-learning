@@ -1,18 +1,31 @@
 name: Continuous Integration
 
-on:
+  on:
   # pull_request:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+        - main
 
-jobs:
+  jobs:
   deployment:
-    runs-on: ubuntu-22.04
-    steps:
+      runs-on: ubuntu-22.04
+      steps:
+      - name: Checkout main branch
+          uses: actions/checkout@v2
 
       - name: Open Web Client Directory
-        run: |
+          run: |
           ls -la
 
-
+      - name: executing remote ssh commands using ssh key
+          uses: appleboy/ssh-action@v0.1.7
+          with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+              whoami
+              cd /usr/local/bin/home
+              git pull
+              sudo systemctl restart fastapi_demo
