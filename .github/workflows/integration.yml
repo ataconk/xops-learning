@@ -1,12 +1,12 @@
 name: Continuous Integration
 
-  on:
-  # pull_request:
-    push:
-        branches:
-        - main
+on:
+# pull_request:
+  push:
+      branches:
+      - main
 
-  jobs:
+jobs:
   deployment:
       runs-on: ubuntu-22.04
       steps:
